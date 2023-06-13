@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import BloggPosts from '@/components/BloggPosts.vue'
 
 const routes = [
   {
@@ -7,6 +8,14 @@ const routes = [
     name: 'home',
     component: HomeView
   },
+  
+  {
+    path: '/post/:id:title:date:content',
+    name: 'post',
+    component: BloggPosts,
+    props: true,
+  },
+  
   {
     path: '/about',
     name: 'about',
