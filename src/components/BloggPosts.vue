@@ -1,21 +1,32 @@
 <template>
- <div style="display:flex; flex-direction: column">
-   <p><b>{{ title }}</b>| Date: {{ date }}</p> <br />
-   <p style="max-width: 900px; align-self: center">{{content}}</p>
-     <router-link  :to="{name: 'home'}">
-       <button>Go Back</button>
-     </router-link>
- </div>
+  <div style="display:flex; flex-direction: column">
+    <p><b>{{ title }}</b>| Date: {{ date }}</p> <br />
+    <p style="max-width: 900px; align-self: center">{{ content }}</p>
+    <router-link :to="{ name: 'home' }">
+      <button>Go Back</button>
+    </router-link>
+  </div>
 </template>
 
 <script>
+import data from "@/data";
 export default {
- props: {
-  title: String,
-  date: String,
-  content: String,
- }  
-}
+
+  data() {
+    return {
+      title: "",
+      date: "",
+      content: ""
+    }
+  },
+  mounted() {
+    const id = this.$route.params.id;
+    const post = data.posts.find(post => post.id == id);
+    this.title = post.title;
+    this.date = post.date;
+    this.content = post.content;
+  }
+} 
 </script>
 <style scoped>
 button {

@@ -10,7 +10,7 @@ const routes = [
   },
   
   {
-    path: '/post/:id:title:date:content',
+    path: '/post/:id',
     name: 'post',
     component: BloggPosts,
     props: true,
